@@ -1,6 +1,6 @@
-# DSCI550 Team 7 - Homework 2: Large Scale Social Media Extraction and Analysis for Pixstory
+# DSCI550 Team 7 - Homework 3: Building Visual Apps to Your Multimodal Pixstory Data using Data Science, Creating Data Insights
 
-https://github.com/egunadi/dsci550-hw-extract
+https://github.com/egunadi/dsci550-hw-dataviz
 
 See intro section of our report for overview of project.
 
@@ -339,92 +339,10 @@ The environment.yml file in GitHub can be used to recreate our environment.
 
 The following modules also need to be installed, along with their dependencies:
 
-- Tika-Python <http://github.com/chrismattmann/tika-python>
-- Google’s LangDetect <https://pypi.org/project/langdetect>
-- RTG (Reader Translator Generator) <https://gowda.ai/posts/2021/04/mtdata-nlcodec-rtg-many-english>
-- GeoTopicParser <https://cwiki.apache.org/confluence/display/tika/GeoTopicParser>
-- Detoxify <https://pypi.org/project/detoxify>
-- Tika Dockers `uscdatascience/im2txt-rest-tika` and `uscdatascience/inception-rest-tika`
-  - <https://github.com/USCDataScience/tika-dockers> and 
-  - <https://hub.docker.com/r/uscdatascience/im2txt-rest-tika>
+- Image Space <https://github.com/nasa-jplmemex/image_space/wiki/Quick-Start-Guide-with-ImageCat>
 
-### Notes on Docker Setup
-
-- The following Docker settings were used
-  - CPUs: 8
-  - Memory: 8 GB
-  - Swap: 1 GB
-- Docker commands used can be seen in `docker-commands.sh`
+TBD
 
 ## Running the project
 
-If downloading from GitHub, the "data/pixstory" folder will be empty due to proprietary concerns. A "pixstory_v2.tsv" file should be present, which is a copy of "pixstory_final.tsv" from homework #1.
-
-Results can be reproduced via "code/main.py", which runs the following functions in order:
-
-### Data Consolidation
-
-- consolidate_pixstory_data.convert_tsv_to_csv()
-  - Uses "data/pixstory/pixstory_v2.tsv" to create "data/pixstory/pixstory_v2.csv"
-  - Worked on by Eben Gunadi 
-- media_urls.get_urls()
-  - Uses "data/pixstory/pixstory_v2.csv" to create "data/pixstory/media_urls.csv", a list of Media URLs
-  - Worked on by Eben Gunadi 
-- media_images.download_images()
-  - Uses "data/pixstory/media_urls.csv" to download all pixstory Media images into directory "data/pixstory/media_files"
-  - For convenience, our paper contains a link for downloading these media images
-  - Worked on by Eben Gunadi 
-
-### Functions that adds features to the dataset
-
-- im2text.get_caption_files()
-  - Uses media files in "data/pixstory/media_files" to output captions in "data/pixstory/media_captions" 
-  - To run:
-    - Docker instance of "im2txt-rest-tika" must be running on port 8764
-    - Images in "data/pixstory/media_files" must be served using `python -m http.server` on port 8000
-  - For convenience, our paper contains a link for downloading these caption files
-  - Worked on by Eben Gunadi 
-- im2text.flag_pixstory_captions()
-  - Uses captions in "data/pixstory/media_captions" to create "data/pixstory/pixstory_captions.csv"
-  - Worked on by Eben Gunadi
-- inception.get_object_files()
-  - Uses media files in "data/pixstory/media_files" to output objects in "data/pixstory/media-objects" 
-  - To run:
-    - Docker instance of "inception-rest-tika" must be running on port 8764
-    - Images in "data/pixstory/media_files" must be served using `python -m http.server` on port 8000
-  - For convenience, our paper contains a link for downloading these object files
-  - Worked on by Eben Gunadi 
-- inception.flag_pixstory_objects()
-  - Uses objects in "data/pixstory/media_objects" to create "data/pixstory/pixstory_objects.csv"
-  - Worked on by Eben Gunadi
-- language_code.run_google_lan_det()
-  - Uses "data/pixstory/pixstory_objects.csv" to create "data/pixstory/pixstory_langdetect.csv"
-  - Worked on by Shih-Min (Julia) Huang
-- google_translate.get_clean_narratives()
-  - Uses "data/pixstory/pixstory_langdetect.csv" to generate "data/pixstory/clean_narratives.csv"
-  - Worked on by Eben Gunadi 
-- google_translate.get_translation_files()
-  - Uses "data/pixstory/clean_narratives.csv" to output translations in "data/pixstory/narratives_translated"
-  - For convenience, our paper contains a link for downloading these translation files
-  - Worked on by Eben Gunadi, Yi Chang, and Annie Chang 
-- google_translate.flag_pixstory_translations()
-  - Uses translations in "data/pixstory/narratives_translated" to create "data/pixstory/pixstory_translations.csv"
-  - Worked on by Eben Gunadi
-- geotopic_parsing.create_geo_df()
-  - Uses "data/pixstory/pixstory_translations.csv" to create "data/pixstory/geo_df.csv"
-  - Worked on by Lesly Escobar
-- run_detoxify.run_detoxify()
-  - Uses "data/pixstory/geo_df.csv" to create "data/pixstory/pixstory_detoxify.csv"
-  - Worked on by Yi Chang
-
-If all functions are run in order, "data/pixstory/pixstory_detoxify.csv" should contain all the features generated in this project. However, due to time constraints, these features were generated in a parallel fashion and combined using functions:
-
-- consolidate_pixstory_data.combine_features()
-- consolidate_pixstory_data.convert_csv_to_tsv()
-  - These two functions producte a final "data/pixstory/pixstory_final.tsv" containing all features generated
-  - Worked on by Eben Gunadi
-
-### Analysis
-
-See "observations" section of our report (worked on by Annie Chang) for an analysis of the data.
-- observations.py contains the script used
+TBD
