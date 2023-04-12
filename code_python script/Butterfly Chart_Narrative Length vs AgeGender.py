@@ -22,7 +22,7 @@ def map_age_to_group(age):
             return age_group
     return 'Unknown'
 
-# cleaning narrative
+# function to clean narrative
 def remove_tags(text):
     clean_text = re.sub('<[^<]+?>', '', text)
     clean_text = re.sub(r'(?:\d+&#\d+;+)+', '', clean_text)
@@ -41,6 +41,8 @@ def length_age_gender():
 
     # filter out those with too long narrative
     filtered_df = df_all[df_all['Narrative'].str.len() <= 2500]
+    
+    # clean the narrative
     filtered_df['Narrative'] = filtered_df['Narrative'].apply(remove_tags)
 
     # group by age group and gender and calculate the mean length of Narrative
