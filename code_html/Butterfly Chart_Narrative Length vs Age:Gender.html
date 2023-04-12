@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.bar--positive {
+  fill: pink;
+}
+
+.bar--negative {
+  fill: #9BCCF5;
+}
+
+text {
+  font: 12px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+</style>
+<body>
+<p id="example"></p>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script>
+// Code reference: https://gist.github.com/lmatteis/d0f7533895da2e59cd6f62f3589fd8eb
+
+function mean_length_Chart() {
+  var margin = {top: 20, right: 30, bottom: 40, left: 35},
+    width = 760 - margin.left - margin.right,
+    height = 450 - margin.top - margin.bottom;
+
+  var x = d3.scale.linear()
+      .range([0, width]);
+
+  var y = d3.scale.ordinal()
+      .rangeRoundBands([0, height], 0.2);
+  
+  var tickLabels = ['1000', '500', '0', '500', '1000'];
+  
+  var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("middle")
+      .ticks(5)
+      .tickFormat(function(d, i) {
+          return tickLabels[i];
+      })
+
+  var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left")
+      .tickSize(0)
+
+  var svg = d3.select("body").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  
+
+  function chart(selection) {
+    selection.each(function(data) {
+
+      x.domain(d3.extent(data, function(d) { return d.mean; })).nice();
+      y.domain(data.map(function(d) { return d.age; }));
+
+      var minMean = Math.min.apply(Math, data.map(function(o){return o.mean;}))
+      yAxis.tickPadding(Math.abs(x(minMean) - x(0)) + 10);
+
+      var bar = svg.selectAll(".bar")
+          .data(data)
+
+      bar.enter().append("rect")
+          .attr("class", function(d) { return "bar bar--" + (d.mean < 0 ? "negative" : "positive"); })
+          .attr("x", function(d) { return x(Math.min(0, d.mean)); })
+          .attr("y", function(d) { return y(d.age); })
+          .attr("width", function(d) { return Math.abs(x(d.mean) - x(0)); })
+          .attr("height", y.rangeBand())
+      
+      var barLabels = ['655.61', '1229.42', '514.85', '719.85', '835.26', '1014.89' ,'948.71', '1099.73', '1276.59', '900.25', '978.1', '659.11', '698.25', '159', '1264.63', '1210.87', '610.26', '875.39'];
+      
+      bar.enter().append('text')
+          .attr("text-anchor", "middle")
+          .attr("x", function(d,i) {
+              return x(Math.min(0, d.mean)) + (Math.abs(x(d.mean) - x(0)) / 2);
+          })
+          .attr("y", function(d,i) {
+              return y(d.age) + (y.rangeBand() / 2);
+          })
+          .attr("dy", ".35em")
+          .text(function (d, i) { return barLabels[i]; })
+
+      svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis);
+
+      svg.append("g")
+          .attr("class", "y axis")
+          .attr("transform", "translate(" + x(0) + ",0)")
+          .call(yAxis);
+      
+      svg.append("text")
+          .attr("class", "x label")
+          .attr("text-anchor", "middle")
+          .attr("x", width / 2)
+          .attr("y", height + margin.bottom - 7)
+          .text("Mean Narrative Length");
+
+      svg.append("text")
+          .attr("class", "y label")
+          .attr("text-anchor", "end")
+          .attr("y", margin.left - 65)
+          .attr("x", -height / 2)
+          .attr("dy", ".75em")
+          .attr("transform", "rotate(-90)")
+          .text("Age Group");
+    });
+  }
+
+  return chart;
+}
+
+d3.json("../data/pixstory/length.json", function (data) {
+		var chart = mean_length_Chart();
+    d3.select("#example")
+      .datum(data)
+      .call(chart);
+	})
+	
+// The data may also be loaded in this form
+// var data = [{"age":"0-15","gender":"male","mean":-655.612474},
+//             {"age":"0-15","gender":"female","mean":1229.420354},
+//             {"age":"15-20","gender":"male","mean":-514.848160},
+//             {"age":"15-20","gender":"female","mean":719.854167},
+//             {"age":"20-25","gender":"male","mean":-835.261488},
+//             {"age":"20-25","gender":"female","mean":1014.892950},
+//             {"age":"25-30","gender":"male","mean":-948.707488},
+//             {"age":"25-30","gender":"female","mean":1099.731707},
+//             {"age":"30-35","gender":"male","mean":-1276.591595},
+//             {"age":"30-35","gender":"female","mean":900.248619},
+//             {"age":"35-40","gender":"male","mean":-978.096026},
+//             {"age":"35-40","gender":"female","mean":659.110250},
+//             {"age":"40-45","gender":"male","mean":-698.249483},
+//             {"age":"40-45","gender":"female","mean":159.000000},
+//             {"age":"45-50","gender":"male","mean":-1264.629870},
+//             {"age":"45-50","gender":"female","mean":1210.867857},
+//             {"age":"50+","gender":"male","mean":-610.263177},
+//             {"age":"50+","gender":"female","mean":875.391608}];
+// var chart = mean_length_Chart();
+// d3.select("#example")
+//   .datum(data)
+//   .call(chart);
+
+</script>
+<div class="legend">
+  <div class="legend__item">
+    <div class="legend__symbol legend__symbol--negative"></div>
+    <div class="legend__text">Male</div>
+  </div>
+  <div class="legend__item">
+    <div class="legend__symbol legend__symbol--positive"></div>
+    <div class="legend__text">Female</div>
+  </div>
+</div>
+
+<style>
+.legend {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  justify-content: center;
+}
+
+.legend__item {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+.legend__symbol {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.legend__symbol--positive {
+  background-color: pink;
+}
+
+.legend__symbol--negative {
+  background-color: #9BCCF5;
+}
+</style>
+</body>
