@@ -124,7 +124,7 @@ function mean_length_Chart() {
   return chart;
 }
 
-d3.json("../subset_data/Butterfly Chart_Narrative Length vs AgeGender.json", function (data) {
+d3.json("../subset_data/Butterfly Plot_Narrative Length vs AgeGender.json", function (data) {
 		var chart = mean_length_Chart();
     d3.select("#example")
       .datum(data)
