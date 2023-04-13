@@ -25,6 +25,7 @@ text {
 <p id="example"></p>
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script>
+
 // Code reference: https://gist.github.com/lmatteis/d0f7533895da2e59cd6f62f3589fd8eb
 
 function mean_length_Chart() {
@@ -123,7 +124,7 @@ function mean_length_Chart() {
   return chart;
 }
 
-d3.json("../data/pixstory/Butterfly Chart_Narrative Length vs AgeGender.json", function (data) {
+d3.json("../subset_data/Butterfly Chart_Narrative Length vs AgeGender.json", function (data) {
 		var chart = mean_length_Chart();
     d3.select("#example")
       .datum(data)
