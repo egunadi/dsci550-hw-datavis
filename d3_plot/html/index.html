@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scatter Plot: Age vs Toxicity</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+    <script src="https://unpkg.com/d3@7.4.0/dist/d3.min.js"></script>
+    <script src="https://unpkg.com/@observablehq/plot@0.4.2/dist/plot.umd.min.js"></script>
+  </head>
+  <body>
+    <script>
+      const { csv, autoType } = d3;
+      const { plot, dot } = Plot;
+      const csvUrl =
+        '../subset_data/scatter_plot_age_toxicity.csv';
+      csv(csvUrl, autoType).then((data) => {
+        document.body.appendChild(
+          plot({
+            width: window.innerWidth,
+            height: window.innerHeight,
+            marks: [
+              dot(data, {
+                x: "Age",
+                y: "toxicity",
+                stroke: "Gender",
+              }
+              ),
+            ], color: {
+    legend: true,
+  }
+          })
+        );
+      });
+    </script>
+  </body>
+</html>
