@@ -58,7 +58,7 @@
                 .attr('transform', `translate(${margin.left}, ${margin.top})`)
                 .append(() => chart)
                 .append(legend({
-                          color: d3.scaleOrdinal(["male", "female", "others"], d3.schemeSpectral[4]),
+                          color: d3.scaleOrdinal(["female", "male", "others"], d3.schemeSpectral[4]),
                           title: "Gender",
                           tickSize: 0
                         }))
