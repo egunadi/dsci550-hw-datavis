@@ -37,7 +37,7 @@
         return d;
       }).then((pixstory) => {
         genders = pixstory.columns.slice(1)
-        agegender = genders.flatMap(gender => pixstory.map(d => ({agegroup: d.name, gender, toxicity: d[gender]}))); // pivot longer
+        agegender = genders.flatMap(gender => pixstory.map(d => ({agegroup: d.age_group, gender, toxicity: d[gender]}))); // pivot longer
 
         chart = GroupedBarChart(agegender, {
           x: d => d.agegroup,
