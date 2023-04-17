@@ -339,7 +339,9 @@ The environment.yml file in GitHub can be used to recreate our environment.
 
 The following modules also need to be installed, along with their dependencies:
 
-- Image Space <https://github.com/nasa-jplmemex/image_space/wiki/Quick-Start-Guide-with-ImageCat>
+- Image Space 
+  - <https://github.com/nasa-jplmemex/image_space/wiki/Quick-Start-Guide-with-ImageCat>
+  - <https://github.com/nasa-jpl-memex/image_space>
 
 TBD
 
