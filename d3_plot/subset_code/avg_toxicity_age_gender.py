@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 def generate_avg_toxicity_age_gender():
-    pixstory_filepath = '../data/pixstory/pixstory_final.csv'
+    pixstory_filepath = '../../data/pixstory/pixstory_final.csv'
         
     pixstory_df = pd.read_csv(pixstory_filepath, delimiter=',', encoding='utf-8')
     
@@ -38,7 +38,7 @@ def generate_avg_toxicity_age_gender():
                                   columns=['Gender'], aggfunc=np.mean)
     
     pixstory_df.reset_index() \
-                .to_csv('../data/pixstory/avg_toxicity_age_gender.csv', encoding='utf-8', index=False)
+                .to_csv('../subset_data/avg_toxicity_age_gender.csv', encoding='utf-8', index=False)
 
 if __name__ == '__main__':
     generate_avg_toxicity_age_gender()

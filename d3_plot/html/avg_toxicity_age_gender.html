@@ -33,7 +33,7 @@
           width = 960 - margin.right - margin.left,
           height = 500 - margin.top - margin.bottom;
 
-      d3.csv('../data/Pixstory/avg_toxicity_age_gender.csv', (d) => {
+      d3.csv('../subset_data/avg_toxicity_age_gender.csv', (d) => {
         return d;
       }).then((pixstory) => {
         genders = pixstory.columns.slice(1)

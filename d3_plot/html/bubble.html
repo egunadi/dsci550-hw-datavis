@@ -33,7 +33,7 @@
           width = 1100 - margin.right - margin.left,
           height = 1200 - margin.top - margin.bottom;
 
-      d3.csv('flare.csv', (d) => {
+      d3.csv('../subset_data/flare.csv', (d) => {
         return d;
       }).then((flare) => {
 		files = flare.filter(d => d.value !== null) 
