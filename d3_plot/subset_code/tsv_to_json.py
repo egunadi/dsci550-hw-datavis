@@ -2,7 +2,7 @@ import pandas as pd
 import json
 
 # Load the CSV file into a Pandas dataframe
-data='./data/geo_df.csv'
+data='../../data/pixstory/geo_df.csv'
 
 df = pd.read_csv(data)
 
@@ -43,5 +43,5 @@ summary_dict['nrows'] = df.shape[0]
 data_dict = {'summary': summary_dict, 'data': data}
 
 # Write the data dictionary to a JSON file
-with open('data.json', 'w') as f:
+with open('../subset_data/data.json', 'w') as f:
     json.dump(data_dict, f, indent=2)
