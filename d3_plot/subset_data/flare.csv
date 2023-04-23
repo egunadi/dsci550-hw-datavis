@@ -1,5 +1,8 @@
 id,value
 flare,
+flare.vis,
+flare.vis.axis,
+flare.vis.axis. British Indian Territory,2901
 flare.analytics,
 flare.analytics.cluster,
 flare.analytics.cluster.Federal Republic of Germany,1893
@@ -20,6 +23,3 @@ flare.scale,
 flare.scale.Commonwealth of Australia,463
 flare.util,
 flare.util.Madrid,377
-flare.vis,
-flare.vis.axis,
-flare.vis.axis.Paris,366
