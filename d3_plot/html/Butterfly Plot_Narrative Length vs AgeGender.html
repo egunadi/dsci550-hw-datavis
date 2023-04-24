@@ -20,11 +20,20 @@ text {
   stroke: #000;
   shape-rendering: crispEdges;
 }
+#description{
+	margin-left: 30px;
+	margin-right: 30px;
+	margin-bottom: 30px;
+	
+}
 </style>
 <body>
 <p id="example"></p>
 <script src="https://d3js.org/d3.v3.min.js"></script>
+
+
 <script>
+	
 
 // Code reference: https://gist.github.com/lmatteis/d0f7533895da2e59cd6f62f3589fd8eb
 
@@ -156,6 +165,10 @@ d3.json("../subset_data/Butterfly Plot_Narrative Length vs AgeGender.json", func
 //   .call(chart);
 
 </script>
+<div id="description" class="container">
+A butterfly chart of the average post length of Pixstory data grouped by age and gender (excluding gender ‘others’)
+</div>
+
 <div class="legend">
   <div class="legend__item">
     <div class="legend__symbol legend__symbol--negative"></div>
@@ -167,11 +180,11 @@ d3.json("../subset_data/Butterfly Plot_Narrative Length vs AgeGender.json", func
   </div>
 </div>
 
+
 <style>
 .legend {
   display: flex;
-  position: absolute;
-  bottom: 0;
+  position: static;
   justify-content: center;
 }
 

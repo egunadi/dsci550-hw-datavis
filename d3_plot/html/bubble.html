@@ -21,16 +21,24 @@
       font: inherit;
       vertical-align: baseline;
       }
+	  
+	  #description{
+		margin-left: 30px;
+		margin-right: 30px;
+		margin-bottom: 30px;
+	  }
     </style>
     <script src="https://d3js.org/d3.v7.min.js"></script>
   </head>
   <body>
     <div class="container" style="margin-top: 25px"></div>
     <div id="viz"></div>
-
+	<div id="description" class="container">
+	Bubble charts are non-hierarchical packed circles, with the size of the circle corresponding to its value. This is a packed bubble chart that displays the top 10 post location origins of the Pixstory dataset.
+	</div>
     <script>
       let margin = {top: 30, right: 30, bottom: 30, left: 30}
-          width = 1100 - margin.right - margin.left,
+          width = 1200 - margin.right - margin.left,
           height = 1200 - margin.top - margin.bottom;
 
       d3.csv('../subset_data/flare.csv', (d) => {
