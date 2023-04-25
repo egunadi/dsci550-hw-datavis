@@ -358,4 +358,4 @@ Aggregate data used for visualization are available in "d3_plot/subset_data". Fo
 
 ### Landing page instructions
 
-TBD
+The landing page can be found in landing_page/site/index.html.
