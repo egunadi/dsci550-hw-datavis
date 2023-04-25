@@ -358,4 +358,4 @@ Aggregate data used for visualization are available in "d3_plot/subset_data". Fo
 
 ### Landing page instructions
 
-The landing page can be found in landing_page/site/index.html.
+The landing page can be found in landing_page/site/index.html. It can be launched on a browser by opening command prompt within the folder, prompting "http-server", then clicking one of the server links it generates.
