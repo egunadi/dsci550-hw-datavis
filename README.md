@@ -342,9 +342,20 @@ The following modules also need to be installed, along with their dependencies:
 - Image Space 
   - <https://github.com/nasa-jplmemex/image_space/wiki/Quick-Start-Guide-with-ImageCat>
   - <https://github.com/nasa-jpl-memex/image_space>
-
-TBD
+- D3
+  - Node.js and NPM <https://nodejs.org/en>
+  - <https://www.npmjs.com/package/d3>
+- Apache Solr
+  - <http://lucene.apache.org/solr>
+- ElasticSearch
+  - <http://elastic.co>
+- MEMEX GeoParser
+  - <https://github.com/nasa-jpl-memex/GeoParser>
 
 ## Running the project
+
+Aggregate data used for visualization are available in "d3_plot/subset_data". For details on how the raw data was aggregated, see scripts in "d3_plot/subset_code". Locally, raw data is stored in the "data/pixstory" folder. This folder is empty in GitHub due to proprietary concerns, but all raw data files used are available from our prior extraction project (homework 2).
+
+### Landing page instructions
 
 TBD
