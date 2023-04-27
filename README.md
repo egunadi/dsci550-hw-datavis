@@ -1,6 +1,6 @@
 # DSCI550 Team 7 - Homework 3: Building Visual Apps to Your Multimodal Pixstory Data using Data Science, Creating Data Insights
 
-https://github.com/egunadi/dsci550-hw-dataviz
+https://github.com/egunadi/dsci550-hw-datavis
 
 See intro section of our report for overview of project.
 
